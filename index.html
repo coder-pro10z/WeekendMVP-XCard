@@ -2,305 +2,345 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>XCard – Modern UI</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>XCard – Print Safe MVP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 
-:root {
-  --primary: #2563eb;
-  --primary-dark: #1e40af;
-  --bg: #f8fafc;
-  --panel: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
+/* ================= THEME ================= */
+
+:root{
+  --primary:#2563eb;
+  --primary-dark:#1e40af;
+  --bg:#f8fafc;
+  --panel:#ffffff;
+  --text:#0f172a;
+  --border:#e5e7eb;
+  --active:#22c55e;
 }
 
-* { box-sizing: border-box; }
+*{ box-sizing:border-box; }
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
+body{
+  margin:0;
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  width:100%;
+  overflow-x:hidden;
 }
 
 /* ================= HEADER ================= */
 
-header {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: white;
-  padding: 25px;
-  text-align: center;
+header{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:white;
+  padding:10px;
+  text-align:center;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 28px;
+header h1{
+  margin:0;
+  font-size:18px;
 }
 
-header p {
-  margin: 6px 0 0;
-  opacity: 0.9;
+header p{
+  margin:2px 0 0;
+  font-size:11px;
+  opacity:.85;
 }
 
 /* ================= LAYOUT ================= */
 
-.container {
-  max-width: 1300px;
-  margin: auto;
-  padding: 20px;
+.container{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:10px;
 }
 
-.panel {
-  background: var(--panel);
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 18px;
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px;
+  margin-bottom:10px;
 
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
 
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  width:100%;
 }
 
-.panel h3 {
-  width: 100%;
-  margin: 0 0 6px;
-  font-size: 15px;
-  color: var(--primary);
+.panel h3{
+  width:100%;
+  margin:0 0 4px;
+  font-size:12px;
+  color:var(--primary);
 }
 
 /* ================= FORM ================= */
 
-input, textarea, button {
-  font-family: inherit;
+input,textarea,button{
+  font-family:inherit;
+  font-size:12px;
 }
 
-input, textarea {
-  padding: 7px 9px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  font-size: 13px;
+input,textarea{
+  padding:5px 7px;
+  border-radius:5px;
+  border:1px solid var(--border);
+  width:100%;
 }
 
-textarea {
-  resize: vertical;
-  min-height: 60px;
+textarea{
+  min-height:45px;
+  resize:vertical;
 }
 
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--primary);
+.panel input[type="number"]{
+  max-width:70px;
 }
 
 /* ================= BUTTONS ================= */
 
-button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 7px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
+button{
+  background:var(--primary);
+  color:white;
+  border:none;
+  border-radius:5px;
+  padding:6px 10px;
+  font-size:11px;
+  font-weight:600;
+  cursor:pointer;
 }
 
-button:hover {
-  background: var(--primary-dark);
+button:hover{ background:var(--primary-dark); }
+
+button.secondary{
+  background:#e5e7eb;
+  color:var(--text);
 }
 
-button.secondary {
-  background: #e2e8f0;
-  color: var(--text);
+button.active{
+  background:var(--active)!important;
 }
 
-button.secondary:hover {
-  background: #cbd5f5;
+button.danger{
+  background:#dc2626;
 }
 
-button.danger {
-  background: #dc2626;
+/* ================= UPLOAD ROW ================= */
+
+.upload-row{
+  display:flex;
+  gap:8px;
+  width:100%;
+  flex-wrap:wrap;
 }
 
-button.danger:hover {
-  background: #b91c1c;
+.upload-row input[type="file"]{
+  flex:1;
+  min-width:140px;
 }
 
 /* ================= GRID ================= */
 
-.cards-container {
-  display: grid;
-  gap: 18px;
-  justify-items: center;
+.cards-container{
+  width:100%;
+  display:grid;
+  gap:12px;
+  justify-items:center;
 
-  max-width: 190mm;
-  margin: auto;
-
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
 }
 
 /* ================= CARD ================= */
 
-.card {
-  perspective: 1200px;
-  cursor: grab;
+.card{
+  width:100%;
+  max-width:220px;
 }
 
-.card-inner {
-  width: 240px;
-  height: 240px;
-  position: relative;
+.card-inner{
+  width:100%;
+  aspect-ratio:1/1;
 
-  transform-style: preserve-3d;
-  transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
+  position:relative;
 }
 
-@media screen {
-  .card:hover .card-inner {
-    transform: rotateY(180deg);
-  }
+/* Faces */
+
+.face{
+  position:absolute;
+  inset:0;
+
+  border-radius:10px;
+
+  padding:12px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  font-size:12px;
+  font-weight:600;
+
+  box-shadow:0 3px 6px rgba(0,0,0,.08);
 }
 
-.face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  border-radius: 14px;
-  backface-visibility: hidden;
-
-  padding: 18px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  box-shadow: 0 10px 18px rgba(0,0,0,0.08);
+.card-front{
+  background:white;
 }
 
-.card-front {
-  background: white;
+.card-back{
+  background:#0f172a;
+  color:white;
+  display:none;
 }
 
-.card-back {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
-  transform: rotateY(180deg);
+/* Number */
+
+.number{
+  position:absolute;
+  top:5px;
+  left:5px;
+
+  background:var(--primary);
+  color:white;
+
+  font-size:10px;
+  padding:1px 5px;
+  border-radius:4px;
 }
 
-.number {
-  position: absolute;
-  top: 8px;
-  left: 8px;
+/* ================= MODES ================= */
 
-  background: var(--primary);
-  color: white;
+/* Front Mode */
+.front-only .card-front{ display:flex; }
+.front-only .card-back{ display:none; }
 
-  font-size: 11px;
-  padding: 2px 7px;
-  border-radius: 6px;
-}
+/* Back Mode */
+.back-only .card-front{ display:none; }
+.back-only .card-back{ display:flex; }
+
+/* Both Mode */
+.both-mode .card-front{ display:flex; }
+.both-mode .card-back{ display:none; }
 
 /* ================= PRINT ================= */
 
-@media print {
+@media print{
 
-  @page {
-    size: A4 portrait;
-    margin: 8mm;
+  @page{
+    size:A4 portrait;
+    margin:5mm;
   }
 
-  header, .panel {
-    display: none;
+  header,.panel{
+    display:none;
   }
 
-  body {
-    background: white;
+  body{
+    background:white;
   }
 
-  .card-inner {
-    transform: none !important;
+  /* Always print FRONT only */
+  .card-front{
+    display:flex!important;
   }
 
-  .face {
-    box-shadow: none;
+  .card-back{
+    display:none!important;
   }
-}
 
-.front-only .card-back { display: none; }
-.back-only .card-front { display: none; }
-
-@media print {
-  .back-only .card-back { transform: none !important; }
+  .face{
+    box-shadow:none;
+  }
 }
 
 </style>
 </head>
 
-<body>
+<body class="both-mode">
 
 <header>
   <h1>XCard</h1>
-  <p>Modern Flashcard Generator for Interview Preparation</p>
+  <p>Print Safe Flashcard Generator</p>
 </header>
 
 <div class="container">
 
-<!-- Layout -->
-<div class="panel">
-  <h3>Layout Settings</h3>
+<!-- DISPLAY -->
 
-  Columns <input type="number" id="cols" value="3" min="1" max="6">
-  Size <input type="number" id="size" value="240">
+<div class="panel">
+
+  <h3>Display</h3>
+
+  Cols <input type="number" id="cols" value="3" min="1" max="6">
+  Size <input type="number" id="size" value="200">
   Gap <input type="number" id="gap" value="10">
 
-  <button onclick="autoFit()">Auto Fit</button>
+  <button onclick="autoFit()">Fit</button>
   <button onclick="applySettings()">Apply</button>
 
-  <button class="secondary" onclick="showFront()">Front</button>
-  <button class="secondary" onclick="showBack()">Back</button>
-  <button class="secondary" onclick="showBoth()">Both</button>
+  <button id="btnFront" class="secondary" onclick="showFront()">Front</button>
+  <button id="btnBack" class="secondary" onclick="showBack()">Back</button>
+  <button id="btnBoth" class="secondary active" onclick="showBoth()">Both</button>
 
-  <button onclick="window.print()">Print</button>
+  <button onclick="printSafe()">Print</button>
+
 </div>
 
-<!-- Add Card -->
+<!-- ADD -->
+
 <div class="panel">
+
   <h3>Add Card</h3>
 
   <textarea id="frontText" placeholder="Front"></textarea>
   <textarea id="backText" placeholder="Back"></textarea>
 
   <button onclick="addCard()">Add</button>
+
 </div>
 
-<!-- Import -->
+<!-- UPLOAD -->
+
 <div class="panel">
-  <h3>Import Cards</h3>
 
-  <textarea id="bulkInput" placeholder="Question|Answer"></textarea>
+  <h3>Uploads</h3>
 
-  <button onclick="importBulk()">Bulk</button>
+  <textarea id="bulkInput" placeholder="Bulk: Q|A"></textarea>
 
-  CSV <input type="file" accept=".csv" onchange="loadCSV(event)">
-  JSON <input type="file" accept=".json" onchange="loadJSON(event)">
+  <button onclick="importBulk()">Bulk Import</button>
+
+  <div class="upload-row">
+
+    <input type="file"
+           accept=".csv,.json"
+           onchange="handleFile(event)">
+
+    <button class="secondary"
+            onclick="openGoogleDrive()">
+      Google Drive
+    </button>
+
+  </div>
+
 </div>
 
-<!-- Preset -->
+<!-- PRESET -->
+
 <div class="panel">
+
   <h3>Presets</h3>
 
   <input id="presetName" placeholder="Preset name">
@@ -309,54 +349,61 @@ button.danger:hover {
   <button onclick="loadPreset()">Load</button>
 
   <button class="danger" onclick="clearAll()">Clear</button>
+
 </div>
 
+<!-- CARDS -->
 
-<!-- Cards -->
 <div id="cardsContainer" class="cards-container"></div>
 
 </div>
 
+
 <script>
 
-let cardsData = [
-  { front: "What is DI?", back: "Dependency Injection" },
-  { front: "What is REST?", back: "API Architecture" }
+/* ================= DATA ================= */
+
+let cardsData=[
+  {front:"What is DI?",back:"Dependency Injection"},
+  {front:"What is REST?",back:"API Architecture"}
 ];
+
+/* ================= UTIL ================= */
+
+const el=id=>document.getElementById(id);
+const val=id=>el(id).value;
+const set=(id,v)=>el(id).value=v;
 
 /* ================= RENDER ================= */
 
-function renderCards() {
+function renderCards(){
 
-  const box = document.getElementById("cardsContainer");
-  box.innerHTML = "";
+  const box=el("cardsContainer");
+  box.innerHTML="";
 
-  cardsData.forEach((c, i) => {
+  cardsData.forEach((c,i)=>{
 
-    const d = document.createElement("div");
-    d.className = "card";
-    d.draggable = true;
-    d.dataset.index = i;
+    const d=document.createElement("div");
+    d.className="card";
 
-    d.innerHTML = `
+    d.innerHTML=`
+
       <div class="card-inner">
 
         <div class="face card-front">
-          <div class="number">${i + 1}</div>
+          <div class="number">${i+1}</div>
           ${c.front}
         </div>
 
         <div class="face card-back">
-          <div class="number">${i + 1}</div>
+          <div class="number">${i+1}</div>
           ${c.back}
         </div>
 
-      </div>`;
-
-    addDrag(d);
+      </div>
+    `;
 
     box.appendChild(d);
-
   });
 
   applySettings();
@@ -364,94 +411,112 @@ function renderCards() {
 
 /* ================= SETTINGS ================= */
 
-function applySettings() {
+function applySettings(){
 
-  const cols = val("cols");
-  const size = val("size");
-  const gap = val("gap");
+  const cols=val("cols");
+  const size=val("size");
+  const gap=val("gap");
 
-  const grid = el("cardsContainer");
+  const grid=el("cardsContainer");
 
-  grid.style.gridTemplateColumns = `repeat(${cols},1fr)`;
-  grid.style.gap = gap + "mm";
+  grid.style.gridTemplateColumns=
+    `repeat(${cols}, minmax(180px,1fr))`;
 
-  document.querySelectorAll(".card-inner")
-    .forEach(c => {
-      c.style.width = size + "px";
-      c.style.height = size + "px";
+  grid.style.gap=gap+"px";
+
+  document.querySelectorAll(".card")
+    .forEach(c=>{
+      c.style.maxWidth=size+"px";
     });
 }
 
-function autoFit() {
+function autoFit(){
 
-  set("cols", 3);
-  set("size", 220);
-  set("gap", 8);
+  set("cols",3);
+  set("size",180);
+  set("gap",10);
 
   applySettings();
 }
 
 /* ================= ADD ================= */
 
-function addCard() {
+function addCard(){
 
-  const f = el("frontText").value.trim();
-  const b = el("backText").value.trim();
+  const f=el("frontText").value.trim();
+  const b=el("backText").value.trim();
 
-  if (!f || !b) return alert("Fill both fields");
+  if(!f||!b) return alert("Fill both fields");
 
-  cardsData.push({ front: f, back: b });
+  cardsData.push({front:f,back:b});
 
-  el("frontText").value = "";
-  el("backText").value = "";
+  el("frontText").value="";
+  el("backText").value="";
 
   renderCards();
 }
 
 /* ================= BULK ================= */
 
-function importBulk() {
+function importBulk(){
 
-  const t = el("bulkInput").value.trim();
-  if (!t) return;
+  const t=el("bulkInput").value.trim();
+  if(!t) return;
 
-  t.split("\n").forEach(l => {
+  t.split("\n").forEach(l=>{
 
-    if (!l.includes("|")) return;
+    if(!l.includes("|")) return;
 
-    const p = l.split("|");
+    const p=l.split("|");
 
     cardsData.push({
-      front: p[0].trim(),
-      back: p.slice(1).join("|").trim()
+      front:p[0].trim(),
+      back:p.slice(1).join("|").trim()
     });
   });
 
-  el("bulkInput").value = "";
+  el("bulkInput").value="";
 
   renderCards();
 }
 
-/* ================= CSV ================= */
+/* ================= FILE ================= */
 
-function loadCSV(e) {
+function handleFile(e){
 
-  const file = e.target.files[0];
-  if (!file) return;
+  const file=e.target.files[0];
+  if(!file) return;
 
-  const r = new FileReader();
+  const ext=file.name.split(".").pop().toLowerCase();
 
-  r.onload = x => {
+  if(ext!=="csv"&&ext!=="json"){
+    alert("Only CSV or JSON allowed");
+    e.target.value="";
+    return;
+  }
+
+  if(ext==="csv") loadCSV(file);
+  if(ext==="json") loadJSON(file);
+}
+
+function loadCSV(file){
+
+  const r=new FileReader();
+
+  r.onload=x=>{
 
     x.target.result
       .split("\n")
       .slice(1)
-      .forEach(l => {
+      .forEach(l=>{
 
-        const [f, b] = l.split(",");
+        const [f,b]=l.split(",");
 
-        if (f && b)
-          cardsData.push({ front: f.trim(), back: b.trim() });
+        if(f&&b)
+          cardsData.push({
+            front:f.trim(),
+            back:b.trim()
+          });
       });
 
     renderCards();
@@ -460,32 +525,30 @@ function loadCSV(e) {
   r.readAsText(file);
 }
 
-/* ================= JSON ================= */
+function loadJSON(file){
 
-function loadJSON(e) {
+  const r=new FileReader();
 
-  const file = e.target.files[0];
-  if (!file) return;
+  r.onload=x=>{
 
-  const r = new FileReader();
+    try{
 
-  r.onload = x => {
+      const data=JSON.parse(x.target.result);
 
-    try {
+      if(!Array.isArray(data)) throw"bad";
 
-      const data = JSON.parse(x.target.result);
+      data.forEach(i=>{
 
-      if (!Array.isArray(data)) throw "Invalid";
-
-      data.forEach(i => {
-
-        if (i.front && i.back)
-          cardsData.push({ front: i.front, back: i.back });
+        if(i.front&&i.back)
+          cardsData.push({
+            front:i.front,
+            back:i.back
+          });
       });
 
       renderCards();
 
-    } catch {
+    }catch{
       alert("Invalid JSON");
     }
   };
@@ -493,95 +556,122 @@ function loadJSON(e) {
   r.readAsText(file);
 }
 
-/* ================= DRAG ================= */
+/* ================= DRIVE ================= */
 
-let dragIndex = null;
+function openGoogleDrive(){
 
-function addDrag(elm) {
+  alert("Google Drive integration requires OAuth.");
 
-  elm.addEventListener("dragstart", () => {
-    dragIndex = +elm.dataset.index;
-    elm.style.opacity = "0.4";
-  });
-
-  elm.addEventListener("dragend", () => {
-    elm.style.opacity = "1";
-  });
-
-  elm.addEventListener("dragover", e => e.preventDefault());
-
-  elm.addEventListener("drop", () => {
-
-    const target = +elm.dataset.index;
-
-    const temp = cardsData[dragIndex];
-
-    cardsData.splice(dragIndex, 1);
-    cardsData.splice(target, 0, temp);
-
-    renderCards();
-  });
+  window.open("https://drive.google.com","_blank");
 }
 
 /* ================= PRESET ================= */
 
-function savePreset() {
+function savePreset(){
 
-  const name = el("presetName").value.trim();
-  if (!name) return alert("Enter name");
+  const name=el("presetName").value.trim();
+  if(!name) return alert("Enter name");
 
-  const data = {
-    cards: cardsData,
-    settings: {
-      cols: val("cols"),
-      size: val("size"),
-      gap: val("gap")
+  const data={
+    cards:cardsData,
+    settings:{
+      cols:val("cols"),
+      size:val("size"),
+      gap:val("gap")
     }
   };
 
-  localStorage.setItem(name, JSON.stringify(data));
+  localStorage.setItem(name,JSON.stringify(data));
 
   alert("Saved");
 }
 
-function loadPreset() {
+function loadPreset(){
 
-  const name = el("presetName").value.trim();
+  const name=el("presetName").value.trim();
 
-  const d = localStorage.getItem(name);
-  if (!d) return alert("Not found");
+  const d=localStorage.getItem(name);
+  if(!d) return alert("Not found");
 
-  const obj = JSON.parse(d);
+  const obj=JSON.parse(d);
 
-  cardsData = obj.cards;
+  cardsData=obj.cards;
 
-  set("cols", obj.settings.cols);
-  set("size", obj.settings.size);
-  set("gap", obj.settings.gap);
+  set("cols",obj.settings.cols);
+  set("size",obj.settings.size);
+  set("gap",obj.settings.gap);
 
   renderCards();
 }
 
-/* ================= UTIL ================= */
+/* ================= MODES ================= */
 
-function clearAll() {
+function activate(btn){
 
-  if (!confirm("Clear all cards?")) return;
+  ["btnFront","btnBack","btnBoth"].forEach(id=>{
+    el(id).classList.remove("active");
+  });
 
-  cardsData = [];
-  renderCards();
+  btn.classList.add("active");
 }
 
-function showFront() { document.body.className = "front-only"; }
-function showBack() { document.body.className = "back-only"; }
-function showBoth() { document.body.className = ""; }
+function showFront(){
 
-const el = id => document.getElementById(id);
-const val = id => el(id).value;
-const set = (id, v) => el(id).value = v;
+  document.body.className="front-only";
+
+  activate(el("btnFront"));
+}
+
+function showBack(){
+
+  document.body.className="back-only";
+
+  activate(el("btnBack"));
+}
+
+function showBoth(){
+
+  document.body.className="both-mode";
+
+  activate(el("btnBoth"));
+}
+
+/* ================= PRINT ================= */
+
+// function printSafe(){
+
+//   // Force front mode for printing
+//   // document.body.className="front-only";
+
+  
+//   setTimeout(()=>{
+//     window.print();
+//   },500);
+
+  // activate(el("btnFront"));
+// }
+function printSafe(){
+window.print();
+  // document.body.classList.remove("back-preview");
+
+  // setTimeout(()=>{
+  //   window.print();
+  // },200);
+}
+
+/* ================= CLEAR ================= */
+
+function clearAll(){
+
+  if(!confirm("Clear all cards?")) return;
+
+  cardsData=[];
+  renderCards();
+}
 
 /* ================= INIT ================= */
 
+showBoth();
 renderCards();
 
 </script>
